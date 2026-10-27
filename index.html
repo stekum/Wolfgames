@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Wolfstal Reiterhof</title>
+  <meta name="description" content="Pflege dein Pferd im Stall und reite durch das Wolfstal – ein kleines Browser-Reitspiel.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐴</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>🐺 Wolfstal Reiterhof</h1>
+    <div class="wallet">
+      <span id="coins" title="Münzen">🪙 0</span>
+      <span id="apples" title="Äpfel">🍎 0</span>
+      <button id="muteBtn" class="icon-btn" aria-label="Ton an/aus">🔊</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="stage">
+      <canvas id="game" aria-label="Spielfläche"></canvas>
+
+      <div id="hud" class="hud hidden">
+        <span id="hudHearts"></span>
+        <span id="hudDist">0 m</span>
+        <span id="hudCoins">🪙 0</span>
+        <button id="pauseBtn" class="icon-btn" aria-label="Pause">❚❚</button>
+      </div>
+
+      <div id="toast" class="toast hidden" role="status"></div>
+      <div id="overlay" class="overlay hidden"><div class="dialog" id="dialog"></div></div>
+    </div>
+
+    <section id="stablePanel" class="panel">
+      <div class="horse-name">
+        <label for="horseName">Name deines Pferdes</label>
+        <input id="horseName" maxlength="16" autocomplete="off">
+      </div>
+      <div class="stats" id="stats"></div>
+      <div class="actions">
+        <button data-action="apple">🍎 Apfel geben</button>
+        <button data-action="hay">🌾 Heu füttern <small>5 🪙</small></button>
+        <button data-action="brush">🪮 Bürsten</button>
+        <button data-action="rest">💤 Ausruhen</button>
+      </div>
+      <div class="main-actions">
+        <button id="rideBtn" class="primary">🏇 Ausreiten</button>
+        <button id="shopBtn">🛍️ Pferdeshop</button>
+      </div>
+      <p class="record" id="record"></p>
+    </section>
+
+    <section id="shopPanel" class="panel hidden">
+      <h2>Fellfarben</h2>
+      <div class="shop-grid" id="coatGrid"></div>
+      <h2>Satteldecken</h2>
+      <div class="shop-grid" id="padGrid"></div>
+      <div class="main-actions">
+        <button id="shopBackBtn" class="primary">⬅ Zurück zum Stall</button>
+      </div>
+    </section>
+
+    <section id="ridePanel" class="panel hidden">
+      <button id="jumpBtn" class="primary jump">⬆ Springen</button>
+      <p class="hint">Leertaste, Pfeil hoch oder Tippen zum Springen · länger halten = höher · Esc = Pause</p>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
